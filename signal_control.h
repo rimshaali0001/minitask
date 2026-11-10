@@ -1,5 +1,6 @@
-// signal_control.h  (Rimsha's part)
-// Kill / pause / resume a process using Linux signals
+// signal_control.h
+// Mariam's Part: Process Control using Linux Signals
+
 #ifndef SIGNAL_CONTROL_H
 #define SIGNAL_CONTROL_H
 
@@ -8,17 +9,18 @@
 
 enum class SignalResult {
     Ok,
-    NoPermission,     // not your process (need root)
-    NoSuchProcess,    // PID does not exist
+    NoPermission,
+    NoSuchProcess,
     Error
 };
 
-SignalResult terminateProcess(pid_t pid);  // SIGTERM  polite kill
-SignalResult killProcess(pid_t pid);       // SIGKILL  force kill
-SignalResult pauseProcess(pid_t pid);      // SIGSTOP  freeze
-SignalResult resumeProcess(pid_t pid);     // SIGCONT  unfreeze
+// Process control functions
+SignalResult terminateProcess(pid_t pid);
+SignalResult killProcess(pid_t pid);
+SignalResult pauseProcess(pid_t pid);
+SignalResult resumeProcess(pid_t pid);
 
-// turns a result into text you can show in a message box
+// Convert result into readable message
 std::string resultToString(SignalResult r);
 
 #endif
